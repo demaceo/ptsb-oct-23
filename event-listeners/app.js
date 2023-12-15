@@ -6,7 +6,7 @@
     * callback = fx that is triggered immediately after event occurs
 */
 
-const listInput = document.getElementById("listInput");
+// const listInput = document.getElementById("listInput");
 
 /*
  * 1. Event listener listens for a key up event
@@ -16,10 +16,15 @@ const listInput = document.getElementById("listInput");
  */
 // listInput.addEventListener("keyup", event => console.log(event.target.value))
 //
-
 const submitBtn = document.getElementById("submit");
+const textInputTodo = document.getElementById("listInput");
+
 submitBtn.addEventListener("click", (evt) => {
   console.log(evt);
+});
+
+textInputTodo.addEventListener("keyup", (evt) => {
+  console.log(evt.target.value);
 });
 /*
     ! Challenge
