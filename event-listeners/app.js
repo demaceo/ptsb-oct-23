@@ -6,7 +6,7 @@
     * callback = fx that is triggered immediately after event occurs
 */
 
-// const listInput = document.getElementById("listInput");
+const listInput = document.getElementById("listInput");
 
 /*
  * 1. Event listener listens for a key up event
@@ -16,18 +16,16 @@
  */
 // listInput.addEventListener("keyup", event => console.log(event.target.value))
 //
-const textInputTodo = document.getElementById("listInput");
-
-textInputTodo.addEventListener("keyup", (evt) => {
-  console.log(evt.target.value);
-  let currentInputValue = evt.target.value;
-
-  if (currentInputValue === "dan") {
-    // alert("you entered dan");
-    if (confirm("you entered dan")) {
-      console.log("hi dan");
-    }
-  }
+let currentInputValue;
+listInput.addEventListener("keyup", (evt) => {
+  // console.log(evt.target.value);
+  currentInputValue = evt.target.value;
+  // if (currentInputValue === "dan") {
+  // alert("you entered dan");
+  // if (confirm("you entered dan")) {
+  // console.log("hi dan");
+  // }
+  // }
 });
 
 const removeBtn = document.getElementById("remove");
@@ -40,7 +38,9 @@ const ulToDo = document.getElementById("ulToDo");
 const addBtn = document.getElementById("add");
 addBtn.addEventListener("click", (evt) => {
   const newItem = document.createElement("li");
+  newItem.textContent = currentInputValue;
   ulToDo.append(newItem);
+  listInput.value = "";
 });
 
 /*
