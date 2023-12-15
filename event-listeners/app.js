@@ -16,16 +16,33 @@
  */
 // listInput.addEventListener("keyup", event => console.log(event.target.value))
 //
-const submitBtn = document.getElementById("submit");
 const textInputTodo = document.getElementById("listInput");
-
-submitBtn.addEventListener("click", (evt) => {
-  console.log(evt);
-});
 
 textInputTodo.addEventListener("keyup", (evt) => {
   console.log(evt.target.value);
+  let currentInputValue = evt.target.value;
+
+  if (currentInputValue === "dan") {
+    // alert("you entered dan");
+    if (confirm("you entered dan")) {
+      console.log("hi dan");
+    }
+  }
 });
+
+const removeBtn = document.getElementById("remove");
+
+removeBtn.addEventListener("click", (evt) => {
+  console.log(evt);
+});
+
+const ulToDo = document.getElementById("ulToDo");
+const addBtn = document.getElementById("add");
+addBtn.addEventListener("click", (evt) => {
+  const newItem = document.createElement("li");
+  ulToDo.append(newItem);
+});
+
 /*
     ! Challenge
     * We can add items BUT
