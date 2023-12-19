@@ -21,25 +21,43 @@
 
 // ^ Challenge - throw an error when the function gets a pet that they don't have
 // Message - You entered a pet you don't have!
-const getPets = (name) => {
-  const pets = ["Spot", "Ginny", "Steve", "X"];
-  const matchedPets = pets.filter((pet) => pet === name);
-  console.log(matchedPets);
-  if (!matchedPets.length) {
-    throw new Error("You entered a pet you don't have!");
-  }
+// ~ const getPets = (name) => {
+//   const pets = ["Spot", "Ginny", "Steve", "X"];
+//   const matchedPets = pets.filter((pet) => pet === name);
+//   console.log(matchedPets);
+//   if (!matchedPets.length) {
+//     throw new Error("You entered a pet you don't have!");
+//   }
 
-  console.log(`I have this pet named: ${pets[0]}`);
-  return pets;
-};
+//   console.log(`I have this pet named: ${pets[0]}`);
+//   return pets;
+// };
 
-getPets('Dan');
+// getPets('Dan');
 // ? Try/Catch
 // This can be found across many languages as a sort of "bubble" to "try" some code and if it errors, it will catch it.
 // It will allow you to manage errors and possibly prevent your application from crashing.
 
 // Updating the previous function example with a try/catch
 //
+
+function getPets(name) {
+  try {
+    const pets = ["Spot", "Ginny", "Steve", "X"];
+    const matchedPets = pets.filter((pet) => pet === name);
+    // console.log(matchedPets);
+    if (!matchedPets.length) {
+      throw new Error("You entered a pet you don't have!");
+    }
+    console.log(`I have this pet named: ${matchedPets}`);
+    // return pets;
+  } catch (err) {
+    console.log(err);
+  }
+  // return [];
+}
+
+getPets("Ginny");
 
 // Errors without throwing using try/catch
 // In this example I tried to access a non-existant variable. Since the Javascript errors, even though I didn't throw, the error is passed down to the catch and can be looked at.

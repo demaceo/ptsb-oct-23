@@ -7,6 +7,7 @@
 */
 
 const listInput = document.getElementById("listInput");
+const inputField = document.getElementById("inputField");
 
 /*
  * 1. Event listener listens for a key up event
@@ -30,17 +31,29 @@ listInput.addEventListener("keyup", (evt) => {
 
 const removeBtn = document.getElementById("remove");
 
-removeBtn.addEventListener("click", (evt) => {
-  console.log(evt);
-});
+// removeBtn.addEventListener("click", (evt) => {
+//   console.log(evt);
+// });
 
 const ulToDo = document.getElementById("ulToDo");
 const addBtn = document.getElementById("add");
+
 addBtn.addEventListener("click", (evt) => {
-  const newItem = document.createElement("li");
-  newItem.textContent = currentInputValue;
-  ulToDo.append(newItem);
-  listInput.value = "";
+  if (!listInput.value) {
+    listInput.className = "error";
+    return false;
+    // alert("Please type in a To-Do to add");
+    // const newError = document.createElement("div");
+    // newError.classList.add("error");
+    // newError.textContent = "Please type in a To-Do to add";
+    // inputField.append(newError);
+  } else {
+    listInput.classList.remove("error");
+    const newItem = document.createElement("li");
+    newItem.textContent = currentInputValue;
+    ulToDo.append(newItem);
+    listInput.value = "";
+  }
 });
 
 /*
