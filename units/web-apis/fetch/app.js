@@ -4,7 +4,7 @@
     * allows for HTTP request and response lifecycle
     * part of a RESTful architecture
     * REST - representational state transfer
-    * Stateless, cacheable, layered system allow for req and res using:
+    * Stateless, catch-able, layered system allow for req and res using:
         * CRUD: create, read, update, and delete
         * HTTP methods: POST, GET, PUT, DELETE
         * HTTP requests sent from the client
@@ -51,8 +51,45 @@
     * 2. Use .then resolver to catch fetch's return and assign to a parameter
     * 3. The parameter is part of a Response interface object
     * 4. Body of our response is inacessible. It's part of a ReadableStream object.
-    * 5. Utilize Response interface's .json() method to read the stram
+    * 5. Utilize Response interface's .json() method to read the stream
     * 6. .json() method returns a promise
-    * 7. Resolve the epromise with one more .then() resolver
+    * 7. Resolve the promise with one more .then() resolver
     * 8. Catch the return as a data parameter
 */
+const url = "https://pokeapi.co/api/v2/pokemon/";
+
+// fetch(url)
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((data) => {
+//     console.log(data);
+//     data.results.forEach((pokemon) => {
+//       let h3 = document.createElement("h3");
+//       h3.textContent = pokemon.name;
+//       document.body.appendChild(h3);
+//     });
+//     throw new Error("uh oh");
+//   })
+//   .catch((error) => {
+//     console.log(`im the catch - ${error.message}`);
+//   });
+
+async function getData() {
+  try {
+    const resp = await fetch(url);
+    const data = await resp.json();
+
+    throw new Error("uh oh");
+
+    data.results.forEach((pokemon) => {
+      let h3 = document.createElement("h3");
+      h3.textContent = pokemon.name;
+      document.body.appendChild(h3);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+getData();
